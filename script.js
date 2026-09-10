@@ -16,6 +16,8 @@ const dayTabs=document.getElementById('dayTabs');
 const scheduleLessons=document.getElementById('scheduleLessons');
 const selectedDayTitle=document.getElementById('selectedDayTitle');
 const selectedDayCount=document.getElementById('selectedDayCount');
+const todaySummary=document.getElementById('todaySummary');
+const dashboardLessons=document.getElementById('dashboardLessons');
 
 function lessonCard(name,index){
   return `<div class="lesson"><div class="lesson-no">${index+1}</div><div><div class="lesson-name">${name}</div><div class="lesson-meta">${index+1}-р цаг</div></div></div>`;
@@ -24,6 +26,7 @@ function lessonCard(name,index){
 function renderToday(){
   const now=new Date();
   const day=now.getDay();
+
   document.getElementById('todayDate').textContent=`${now.getFullYear()} • ${mnMonths[now.getMonth()]} • ${now.getDate()}`;
   document.getElementById('todayDay').textContent=weekNames[day];
   document.getElementById('year').textContent=now.getFullYear();
@@ -32,10 +35,14 @@ function renderToday(){
     const data=schedule[day];
     todayTitle.textContent=`${data.name} гаригийн хичээл`;
     lessonCount.textContent=`${data.lessons.length} хичээл`;
+    dashboardLessons.textContent=`${data.lessons.length} хичээл`;
+    todaySummary.textContent=`Өнөөдөр ${data.lessons.length} хичээлтэй.`;
     todayLessons.innerHTML=data.lessons.map(lessonCard).join('');
   }else{
     todayTitle.textContent='Өнөөдөр хичээлгүй';
     lessonCount.textContent='Амралтын өдөр';
+    dashboardLessons.textContent='Амралтын өдөр';
+    todaySummary.textContent='Өнөөдөр амралтын өдөр байна.';
     todayLessons.innerHTML='<div class="empty-state"><div class="empty-icon">✓</div><div><h3>Амралтын өдөр</h3><p>Дараагийн хичээлийн өдрийн хуваарийг доороос харна уу.</p></div></div>';
   }
 }
@@ -43,18 +50,22 @@ function renderToday(){
 function renderTabs(){
   const currentDay=new Date().getDay();
   const fallback=currentDay>=1&&currentDay<=5?currentDay:1;
+
   Object.entries(schedule).forEach(([key,data])=>{
     const btn=document.createElement('button');
     btn.className='day-tab'+(Number(key)===fallback?' active':'');
     btn.textContent=data.name;
     btn.type='button';
+
     btn.addEventListener('click',()=>{
       document.querySelectorAll('.day-tab').forEach(x=>x.classList.remove('active'));
       btn.classList.add('active');
       renderSchedule(Number(key));
     });
+
     dayTabs.appendChild(btn);
   });
+
   renderSchedule(fallback);
 }
 
@@ -67,10 +78,12 @@ function renderSchedule(day){
 
 const menuBtn=document.getElementById('menuBtn');
 const nav=document.getElementById('nav');
+
 menuBtn.addEventListener('click',()=>{
   const open=nav.classList.toggle('open');
   menuBtn.setAttribute('aria-expanded',String(open));
 });
+
 nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
   nav.classList.remove('open');
   menuBtn.setAttribute('aria-expanded','false');
