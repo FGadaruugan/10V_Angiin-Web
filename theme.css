@@ -1,82 +1,31 @@
-/* Screen: schedule stays colorful like the rest of the site */
+/* Screen: schedule is colorful */
 #schedule{
   background:linear-gradient(180deg,#f8faff 0%,#eef3ff 100%);
   color:#182033;
+  min-height:calc(100vh - 150px);
 }
-
 #schedule .eyebrow{color:#596784}
 #schedule h2,#schedule h3{color:#182033}
-
-#schedule .day-tab{
-  border:1px solid #dbe3f3;
-  background:#fff;
-  color:#34405a;
-  box-shadow:0 6px 18px rgba(55,65,81,.05);
-}
-
-#schedule .day-tab.active{
-  background:linear-gradient(135deg,#4f46e5,#2563eb);
-  color:#fff;
-  border-color:transparent;
-}
-
-#schedule .schedule-card{
-  background:#fff;
-  border:1px solid #e1e7f4;
-  box-shadow:0 16px 40px rgba(55,65,81,.08);
-}
-
+#schedule .day-tab{border:1px solid #dbe3f3;background:#fff;color:#34405a;box-shadow:0 6px 18px rgba(55,65,81,.05)}
+#schedule .day-tab.active{background:linear-gradient(135deg,#4f46e5,#2563eb);color:#fff;border-color:transparent}
+#schedule .schedule-card{background:#fff;border:1px solid #e1e7f4;box-shadow:0 16px 40px rgba(55,65,81,.08)}
 #schedule .schedule-title-row span{color:#7b859b}
-
-#schedule .lesson{
-  background:#f8faff;
-  border:1px solid #e2e7f5;
-}
-
-#schedule .lesson-no{
-  background:linear-gradient(135deg,#4f46e5,#2563eb);
-  color:#fff;
-}
-
+#schedule .lesson{background:#f8faff;border:1px solid #e2e7f5}
+#schedule .lesson-no{background:linear-gradient(135deg,#4f46e5,#2563eb);color:#fff}
 #schedule .lesson-name{color:#182033}
 #schedule .lesson-meta{color:#7b859b}
+.nav .active-link{color:#4f46e5;font-weight:900}
 
-/* PDF / Print only: black and white */
+/* PDF / Print: only schedule, black and white */
 @media print{
-  *{
-    -webkit-print-color-adjust:economy !important;
-    print-color-adjust:economy !important;
-  }
-
-  body,
-  #schedule,
-  #schedule .schedule-card,
-  #schedule .lesson,
-  #schedule .day-tab{
-    background:#fff !important;
-    color:#000 !important;
-    box-shadow:none !important;
-  }
-
-  #schedule .schedule-card,
-  #schedule .lesson,
-  #schedule .day-tab{
-    border-color:#000 !important;
-  }
-
-  #schedule .day-tab.active,
-  #schedule .lesson-no{
-    background:#000 !important;
-    color:#fff !important;
-    border-color:#000 !important;
-  }
-
-  #schedule h2,
-  #schedule h3,
-  #schedule .lesson-name,
-  #schedule .lesson-meta,
-  #schedule .schedule-title-row span,
-  #schedule .eyebrow{
-    color:#000 !important;
-  }
+  @page{size:A4;margin:14mm}
+  .site-header,footer,.print-btn{display:none!important}
+  body{background:#fff!important;color:#000!important}
+  #schedule{padding:0!important;background:#fff!important;color:#000!important}
+  #schedule .container{width:100%!important;max-width:none!important}
+  #schedule .day-tabs{display:none!important}
+  #schedule .schedule-card,#schedule .lesson{background:#fff!important;color:#000!important;box-shadow:none!important;border-color:#000!important}
+  #schedule .schedule-card{border:2px solid #000!important}
+  #schedule .lesson-no{background:#000!important;color:#fff!important}
+  #schedule h2,#schedule h3,#schedule .lesson-name,#schedule .lesson-meta,#schedule .schedule-title-row span,#schedule .eyebrow{color:#000!important}
 }
