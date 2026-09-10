@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111111">
+  <title>10В анги</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#home" aria-label="10В ангийн нүүр">10В</a>
+      <button class="menu-btn" id="menuBtn" type="button" aria-label="Цэс нээх" aria-expanded="false">☰</button>
+      <nav class="nav" id="nav">
+        <a href="#home">Нүүр</a>
+        <a href="#today">Өнөөдөр</a>
+        <a href="#schedule">Хуваарь</a>
+        <a href="#notice">Мэдэгдэл</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">2026–2027 оны хичээлийн жил</p>
+          <h1>10В ангийн<br>нэгдсэн web</h1>
+          <p class="hero-text">Хичээлийн хуваарь, өнөөдрийн хичээл болон ангийн мэдэгдлийг нэг дороос харна.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#today">Өнөөдрийн хичээл</a>
+            <a class="btn secondary" href="#schedule">Бүтэн хуваарь</a>
+          </div>
+        </div>
+
+        <div class="hero-card" aria-label="Өнөөдрийн мэдээлэл">
+          <span class="card-label">Өнөөдөр</span>
+          <strong id="todayDate">—</strong>
+          <span id="todayDay">—</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="today">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Өнөөдрийн төлөвлөгөө</p>
+            <h2 id="todayTitle">Өнөөдрийн хичээл</h2>
+          </div>
+          <span class="pill" id="lessonCount">0 хичээл</span>
+        </div>
+        <div class="today-list" id="todayLessons"></div>
+      </div>
+    </section>
+
+    <section class="section alt" id="schedule">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Даваа — Баасан</p>
+            <h2>Хичээлийн хуваарь</h2>
+          </div>
+        </div>
+        <div class="day-tabs" id="dayTabs" aria-label="Гариг сонгох"></div>
+        <div class="schedule-card">
+          <div class="schedule-title-row">
+            <h3 id="selectedDayTitle">Даваа</h3>
+            <span id="selectedDayCount">7 хичээл</span>
+          </div>
+          <div class="lesson-list" id="scheduleLessons"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="notice">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Ангийн мэдээлэл</p>
+            <h2>Мэдэгдэл</h2>
+          </div>
+        </div>
+        <div class="empty-state">
+          <div class="empty-icon">!</div>
+          <div>
+            <h3>Одоогоор мэдэгдэл алга</h3>
+            <p>Шинэ мэдээлэл нэмэгдэх үед энд харагдана.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <strong>10В анги</strong>
+      <span>© <span id="year"></span></span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
