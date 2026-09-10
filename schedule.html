@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>10В анги — Хичээлийн хуваарь</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="theme.css">
+</head>
+<body>
+<header class="site-header"><div class="container nav-wrap"><a class="brand" href="index.html">10В</a><button class="menu-btn" id="menuBtn" type="button" aria-label="Цэс нээх" aria-expanded="false">☰</button><nav class="nav" id="nav"><a href="index.html">Нүүр</a><a class="active-link" href="schedule.html">Хуваарь</a><a href="notice.html">Мэдэгдэл</a><a href="homework.html">Даалгавар</a><a href="resources.html">Материал</a><a href="about.html">Ангийн тухай</a></nav></div></header>
+<main>
+  <section class="section" id="schedule">
+    <div class="container">
+      <div class="section-head">
+        <div><p class="eyebrow">Даваа — Баасан</p><h2>Хичээлийн хуваарь</h2></div>
+        <button class="btn primary print-btn" id="printSchedule" type="button">PDF / Print</button>
+      </div>
+      <div class="day-tabs" id="dayTabs" aria-label="Гариг сонгох"></div>
+      <div class="schedule-card">
+        <div class="schedule-title-row"><h3 id="selectedDayTitle">Даваа</h3><span id="selectedDayCount">7 хичээл</span></div>
+        <div class="lesson-list" id="scheduleLessons"></div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer><div class="container footer-row"><strong>10В анги</strong><span>© <span id="year"></span></span></div></footer>
+<script src="script.js"></script>
+</body>
+</html>
