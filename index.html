@@ -3,45 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#111111">
-  <meta name="description" content="10В ангийн нэгдсэн вэб — хуваарь, мэдэгдэл, даалгавар, материал.">
-  <title>10В анги</title>
+  <meta name="theme-color" content="#4f46e5">
+  <meta name="description" content="10В ангийн нэгдсэн вэб.">
+  <title>10В анги — Нүүр</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="theme.css">
 </head>
 <body>
   <header class="site-header">
     <div class="container nav-wrap">
-      <a class="brand" href="#home" aria-label="10В ангийн нүүр">10В</a>
-
+      <a class="brand" href="index.html">10В</a>
       <button class="menu-btn" id="menuBtn" type="button" aria-label="Цэс нээх" aria-expanded="false">☰</button>
-
       <nav class="nav" id="nav">
-        <a href="#home">Нүүр</a>
-        <a href="#notice">Мэдэгдэл</a>
-        <a href="#homework">Даалгавар</a>
-        <a href="#resources">Материал</a>
-        <a href="#schedule">Хуваарь</a>
-        <a href="#about">Ангийн тухай</a>
+        <a class="active-link" href="index.html">Нүүр</a>
+        <a href="schedule.html">Хуваарь</a>
+        <a href="notice.html">Мэдэгдэл</a>
+        <a href="homework.html">Даалгавар</a>
+        <a href="resources.html">Материал</a>
+        <a href="about.html">Ангийн тухай</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <section class="hero" id="home">
+    <section class="hero">
       <div class="container hero-grid">
         <div>
           <p class="eyebrow">2026–2027 оны хичээлийн жил</p>
           <h1>10В ангийн<br>нэгдсэн web</h1>
-          <p class="hero-text">Ангийн хэрэгтэй мэдээллүүдийг нэг дороос хурдан харах зориулалттай web.</p>
-
+          <p class="hero-text">Хуваарь, мэдэгдэл, даалгавар болон хичээлийн материалыг тус тусын хуудсаас хурдан нээнэ.</p>
           <div class="hero-actions">
-            <a class="btn primary" href="#dashboard">Dashboard</a>
-            <a class="btn secondary" href="#schedule">Хуваарь харах</a>
+            <a class="btn primary" href="schedule.html">Хуваарь харах</a>
+            <a class="btn secondary" href="notice.html">Мэдэгдэл</a>
           </div>
         </div>
-
-        <div class="hero-card" aria-label="Өнөөдрийн мэдээлэл">
+        <div class="hero-card">
           <span class="card-label">Өнөөдөр</span>
           <strong id="todayDate">—</strong>
           <span id="todayDay">—</span>
@@ -51,171 +47,35 @@
       </div>
     </section>
 
-    <section class="section" id="dashboard">
+    <section class="section">
       <div class="container">
         <div class="section-head">
           <div>
-            <p class="eyebrow">Хурдан харах</p>
-            <h2>Ангийн dashboard</h2>
+            <p class="eyebrow">Хурдан нээх</p>
+            <h2>Ангийн хэсгүүд</h2>
           </div>
         </div>
-
         <div class="dashboard-grid">
-          <a class="dashboard-card" href="#schedule">
-            <span class="dashboard-icon">01</span>
-            <div>
-              <span class="dashboard-label">Өнөөдрийн хичээл</span>
-              <strong id="dashboardLessons">—</strong>
-            </div>
-          </a>
-
-          <a class="dashboard-card" href="#notice">
-            <span class="dashboard-icon">02</span>
-            <div>
-              <span class="dashboard-label">Мэдэгдэл</span>
-              <strong>Шинэ мэдээлэл</strong>
-            </div>
-          </a>
-
-          <a class="dashboard-card" href="#homework">
-            <span class="dashboard-icon">03</span>
-            <div>
-              <span class="dashboard-label">Даалгавар</span>
-              <strong>Хийх зүйлс</strong>
-            </div>
-          </a>
-
-          <a class="dashboard-card" href="#resources">
-            <span class="dashboard-icon">04</span>
-            <div>
-              <span class="dashboard-label">Материал</span>
-              <strong>Файл, холбоос</strong>
-            </div>
-          </a>
+          <a class="dashboard-card" href="schedule.html"><span class="dashboard-icon">01</span><div><span class="dashboard-label">Хичээлийн хуваарь</span><strong id="dashboardLessons">—</strong></div></a>
+          <a class="dashboard-card" href="notice.html"><span class="dashboard-icon">02</span><div><span class="dashboard-label">Мэдэгдэл</span><strong>Ангийн мэдээлэл</strong></div></a>
+          <a class="dashboard-card" href="homework.html"><span class="dashboard-icon">03</span><div><span class="dashboard-label">Даалгавар</span><strong>Хийх зүйлс</strong></div></a>
+          <a class="dashboard-card" href="resources.html"><span class="dashboard-icon">04</span><div><span class="dashboard-label">Материал</span><strong>Файл, холбоос</strong></div></a>
         </div>
       </div>
     </section>
 
-    <section class="section alt" id="today">
+    <section class="section alt">
       <div class="container">
         <div class="section-head">
-          <div>
-            <p class="eyebrow">Өнөөдрийн төлөвлөгөө</p>
-            <h2 id="todayTitle">Өнөөдрийн хичээл</h2>
-          </div>
+          <div><p class="eyebrow">Өнөөдрийн төлөвлөгөө</p><h2 id="todayTitle">Өнөөдрийн хичээл</h2></div>
           <span class="pill" id="lessonCount">0 хичээл</span>
         </div>
         <div class="today-list" id="todayLessons"></div>
       </div>
     </section>
-
-    <section class="section" id="notice">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">Чухал мэдээлэл</p>
-            <h2>Мэдэгдэл</h2>
-          </div>
-        </div>
-
-        <div class="empty-state">
-          <div class="empty-icon">!</div>
-          <div>
-            <h3>Одоогоор мэдэгдэл нэмээгүй байна</h3>
-            <p>Ангийн зарлал, шалгалт, арга хэмжээний мэдээллийг энд байрлуулж болно.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section alt" id="homework">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">Хийх зүйлс</p>
-            <h2>Даалгавар</h2>
-          </div>
-        </div>
-
-        <div class="empty-state">
-          <div class="empty-icon">✓</div>
-          <div>
-            <h3>Даалгаврын мэдээлэл оруулаагүй байна</h3>
-            <p>Хичээл, хугацаа, тайлбар гэсэн мэдээлэлтэйгээр энд харуулж болно.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="resources">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">Хэрэгтэй зүйлс</p>
-            <h2>Материал</h2>
-          </div>
-        </div>
-
-        <div class="resource-grid">
-          <div class="resource-card">
-            <span>PDF</span>
-            <h3>Хичээлийн материал</h3>
-            <p>PDF, зураг болон бусад файлын холбоосыг энд байрлуулна.</p>
-          </div>
-          <div class="resource-card">
-            <span>LINK</span>
-            <h3>Хэрэгтэй холбоос</h3>
-            <p>Google Drive, Forms болон бусад хэрэгтэй холбоосууд.</p>
-          </div>
-          <div class="resource-card">
-            <span>DOC</span>
-            <h3>Ангийн документ</h3>
-            <p>Ангийн нийтэд хэрэгтэй документуудыг нэг дор хадгална.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section alt" id="schedule">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">Даваа — Баасан</p>
-            <h2>Хичээлийн хуваарь</h2>
-          </div>
-        </div>
-
-        <div class="day-tabs" id="dayTabs" aria-label="Гариг сонгох"></div>
-
-        <div class="schedule-card">
-          <div class="schedule-title-row">
-            <h3 id="selectedDayTitle">Даваа</h3>
-            <span id="selectedDayCount">7 хичээл</span>
-          </div>
-          <div class="lesson-list" id="scheduleLessons"></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="about">
-      <div class="container about-card">
-        <div>
-          <p class="eyebrow">Манай анги</p>
-          <h2>10В анги</h2>
-          <p>Энэ хэсэгт ангийн танилцуулга, ангийн зорилго, багшийн мэдээлэл болон бусад нийтэд харагдах мэдээллийг оруулж болно.</p>
-        </div>
-        <div class="about-mark">10В</div>
-      </div>
-    </section>
   </main>
 
-  <footer>
-    <div class="container footer-row">
-      <strong>10В анги</strong>
-      <span>© <span id="year"></span></span>
-    </div>
-  </footer>
-
+  <footer><div class="container footer-row"><strong>10В анги</strong><span>© <span id="year"></span></span></div></footer>
   <script src="script.js"></script>
 </body>
 </html>
