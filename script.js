@@ -73,6 +73,135 @@ function renderTabs(){
   renderSchedule(fallback);
 }
 
+/* ------------------------------
+   УХААЛАГ ГЭРИЙН ДААЛГАВАР
+-------------------------------- */
+const homeworkData=[
+  {
+    subject:'Хими',
+    assigned:'2026-09-14',
+    status:'active'
+  },
+  {
+    subject:'Газар зүй',
+    assigned:'2026-09-14',
+    status:'unknown',
+    text:'Даалгавар тодорхойгүй байна.'
+  },
+  {
+    subject:'Англи хэл',
+    assigned:'2026-09-14',
+    status:'none',
+    text:'Даалгавар өгөөгүй.'
+  }
+];
+
+function localDateFromISO(iso){
+  const [y,m,d]=iso.split('-').map(Number);
+  return new Date(y,m-1,d);
+}
+
+function startOfDay(date){
+  return new Date(date.getFullYear(),date.getMonth(),date.getDate());
+}
+
+function addDays(date,days){
+  const copy=new Date(date);
+  copy.setDate(copy.getDate()+days);
+  return copy;
+}
+
+function formatShortDate(date){
+  return `${String(date.getMonth()+1).padStart(2,'0')}.${String(date.getDate()).padStart(2,'0')}`;
+}
+
+function nextLessonDate(subject,assignedISO){
+  const assigned=localDateFromISO(assignedISO);
+  for(let i=1;i<=14;i++){
+    const candidate=addDays(assigned,i);
+    const daySchedule=schedule[candidate.getDay()];
+    if(daySchedule&&daySchedule.lessons.includes(subject)) return candidate;
+  }
+  return null;
+}
+
+function daysUntil(date){
+  const today=startOfDay(new Date());
+  const target=startOfDay(date);
+  return Math.round((target-today)/86400000);
+}
+
+function dueLabel(days,dueDate){
+  if(days===0) return '🔴 ӨНӨӨДӨР ӨГНӨ';
+  if(days===1) return '🟠 Маргааш өгнө';
+  if(days===2||days===3) return `🟡 ${days} өдөр үлдсэн`;
+  return `${days} өдөр үлдсэн · ${formatShortDate(dueDate)}`;
+}
+
+function statusCard(subject,icon,title,text,badge){
+  return `
+    <section class="homework-card" style="margin-top:16px" data-generated-homework="true">
+      <div class="homework-card-top">
+        <div class="subject-icon">${icon}</div>
+        <div class="subject-info">
+          <div class="subject-kicker">09.14 мэдээлэл</div>
+          <h2>${subject}</h2>
+          <p>${title}</p>
+        </div>
+        <div class="task-count">${badge}</div>
+      </div>
+      <div class="task-list">
+        <article class="task-row">
+          <div class="page-number">${icon}</div>
+          <div class="task-main">
+            <strong>${title}</strong>
+            <span>${text}</span>
+          </div>
+          <div class="problem-badge">${badge}</div>
+        </article>
+      </div>
+    </section>`;
+}
+
+function renderHomework(){
+  const chemistryCard=document.querySelector('.homework-card[aria-labelledby="chemistryTitle"]');
+  if(!chemistryCard) return;
+
+  document.querySelectorAll('[data-generated-homework="true"]').forEach(el=>el.remove());
+
+  const chemistry=homeworkData.find(x=>x.subject==='Хими');
+  const chemistryDue=nextLessonDate('Хими',chemistry.assigned);
+  const chemistryDays=chemistryDue?daysUntil(chemistryDue):null;
+  const chemistryBadge=chemistryCard.querySelector('.task-count');
+
+  // Өгөх өдөр бүтэн харагдана. Дараагийн өдрөөс үндсэн жагсаалтаас алга болно.
+  if(chemistryDays!==null&&chemistryDays<0){
+    chemistryCard.style.display='none';
+  }else{
+    chemistryCard.style.display='';
+    if(chemistryBadge&&chemistryDays!==null){
+      chemistryBadge.textContent=dueLabel(chemistryDays,chemistryDue);
+    }
+  }
+
+  const geography=homeworkData.find(x=>x.subject==='Газар зүй');
+  const geoDue=nextLessonDate('Газар зүй',geography.assigned);
+  const geoDays=geoDue?daysUntil(geoDue):null;
+  if(geoDays===null||geoDays>=0){
+    chemistryCard.insertAdjacentHTML('afterend',statusCard(
+      'Газар зүй','?','Даалгавар тодорхойгүй',
+      geoDue?`Дараагийн Газар зүй ${formatShortDate(geoDue)}. Мэдээллийг дараа нь шинэчилж болно.`:'Мэдээллийг дараа нь шинэчилж болно.',
+      'Шалгах'
+    ));
+  }
+
+  const english=homeworkData.find(x=>x.subject==='Англи хэл');
+  const lastGenerated=document.querySelector('[data-generated-homework="true"]:last-of-type')||chemistryCard;
+  lastGenerated.insertAdjacentHTML('afterend',statusCard(
+    'Англи хэл','✓','Даалгавар өгөөгүй',english.text,'Байхгүй'
+  ));
+}
+
 const menuBtn=document.getElementById('menuBtn');
 const nav=document.getElementById('nav');
 if(menuBtn&&nav){
@@ -86,3 +215,4 @@ document.getElementById('printSchedule')?.addEventListener('click',()=>window.pr
 
 renderToday();
 renderTabs();
+renderHomework();
